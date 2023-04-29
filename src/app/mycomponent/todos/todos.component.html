@@ -1,0 +1,15 @@
+<app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+<h5>Your Todos</h5>
+<div class="d-flex flex-wrap">
+  <div *ngIf="this.todos.length === 0; else elseBlock">
+     <p> No Todo's to display</p><br>
+      <img src="../../../assets/todogif.gif" alt=""  width="30%">
+  </div>
+
+  <ng-template #elseBlock>
+    <div *ngFor="let todo of todos">
+      <app-todos-items [todo]="todo" (todoDelete)="deleteTodo($event)">
+      </app-todos-items>
+    </div>
+  </ng-template>
+</div>
